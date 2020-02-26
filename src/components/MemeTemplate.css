@@ -1,10 +1,9 @@
 .main {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 .memeContainer {
-  height: 600px;
+  /* height: 600px; */
   width: 500px;
 }
 .memeImage {
