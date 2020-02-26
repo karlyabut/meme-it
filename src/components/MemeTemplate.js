@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import '../components/MemeTemplate.css';
 
-const MemeTemplate = ({ props }) => {
+const MemeTemplate = ({ name, source }) => {
   return (
-    <div>
-      <h5>{props}</h5>
+    <div className="main">
+      <div className="memeContainer">
+        <h3>{name}</h3>
+        <img className="memeImage" src={source} />
+      </div>
     </div>
   );
 };

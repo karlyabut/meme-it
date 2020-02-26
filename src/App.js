@@ -11,11 +11,13 @@ function App() {
       .then(res => setMemes(res.data.memes));
   }, []);
   for (let i in memes) {
-    items.push(<MemeTemplate key={i} props={memes[i].name} />);
+    items.push(
+      <MemeTemplate key={i} name={memes[i].name} source={memes[i].url} />
+    );
   }
   return (
     <div className="App">
-      <span>{items}</span>
+      {items}
       {/* <button onClick={() => <MemeTemplate />}>whe</button> */}
     </div>
   );
