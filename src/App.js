@@ -11,8 +11,14 @@ function App() {
       .then(res => setMemes(res.data.memes));
   }, []);
   for (let i in memes) {
+    console.log(memes[i]);
     items.push(
-      <MemeTemplate key={i} name={memes[i].name} source={memes[i].url} />
+      <MemeTemplate
+        key={i}
+        id={memes[i].id}
+        name={memes[i].name}
+        source={memes[i].url}
+      />
     );
   }
   return (
