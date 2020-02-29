@@ -3,7 +3,21 @@ import '../components/MemeTemplate.css';
 
 const MemeTemplate = ({ id, name, source }) => {
   function getId() {
-    alert(id);
+    fetch('https://api.imgflip.com/caption_image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        template_id: id,
+        username: 'imgflip_hubot',
+        password: 'imgflip_hubot',
+        text0: 'sample',
+        text1: 'sampletext'
+      })
+    }).then(res => {
+      console.log(res);
+    });
   }
   return (
     <div className="main" onClick={getId}>
