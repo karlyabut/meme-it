@@ -5,6 +5,7 @@ const MemeTemplate = ({ id, name, source }) => {
   function getId() {
     fetch('https://api.imgflip.com/caption_image', {
       method: 'POST',
+      mode: 'cors', //figure out cors error and proxying
       headers: {
         'Content-Type': 'application/json'
       },
