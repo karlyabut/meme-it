@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../components/MemeTemplate.css';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 const MemeTemplate = ({ id, name, source }) => {
-  function getId() {
-    fetch('https://api.imgflip.com/caption_image', {
+  const apiProxy = createProxyMiddleware(
+    'https://api.imgflip.com/caption_image'
+  );
+  async function getId() {
+    fetch(apiProxy, {
       method: 'POST',
       mode: 'cors', //figure out cors error and proxying
       headers: {
