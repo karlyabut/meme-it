@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import '../components/MemeTemplate.css';
-import { createProxyMiddleware } from 'http-proxy-middleware';
 
 const MemeTemplate = ({ id, name, source }) => {
-  const apiProxy = createProxyMiddleware(
-    'https://api.imgflip.com/caption_image'
-  );
   async function getId() {
-    fetch(apiProxy, {
-      method: 'POST',
-      mode: 'cors', //figure out cors error and proxying
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        template_id: id,
-        username: 'imgflip_hubot',
-        password: 'imgflip_hubot',
-        text0: 'sample',
-        text1: 'sampletext'
+    fetch(
+      'https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          'template_id': '231',
+          'username': 'imgflip_hubot',
+          'password': 'imgflip_hubot',
+          'text0': 'sample',
+          'text1': 'sampletext'
+        })
+      }
+    )
+      .then(res => {
+        return res.json();
       })
-    }).then(res => {
-      console.log(res);
-    });
+      .then(data => {
+        console.log(data);
+      });
   }
   return (
     <div className="main" onClick={getId}>
