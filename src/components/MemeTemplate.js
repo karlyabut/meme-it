@@ -3,42 +3,56 @@ import "../components/MemeTemplate.css";
 import axios from "axios";
 
 const MemeTemplate = ({ id, name, source }) => {
-  const headers = { "Content-Type": "multipart/form-data" };
+  const headers = {
+    "X-Requested-With": "application/x-www-form-urlencoded"
+  };
   function getId() {
+    const createMemeObj = {
+      template_id: id,
+      username: "",
+      password: "@r",
+      text0: "sample",
+      text1: "sampletext"
+    };
+    const params = Object.keys(createMemeObj)
+      .map(key => {
+        return (
+          encodeURIComponent(key) + "=" + encodeURIComponent(createMemeObj[key])
+        );
+      })
+      .join("&");
     axios
       .post(
         "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image",
-        {
-          template_id: "1232",
-          username: "imgflip_hubot",
-          password: "imgflip_hubot",
-          text0: "sample",
-          text1: "sampletext"
-        },
+        params,
         { headers: headers }
       )
       .then(res => {
         console.log(res);
       });
     // fetch(
-    //   'https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image',
+    //   "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image",
     //   {
-    //     method: 'POST',
+    //     method: "POST",
     //     headers: {
-    //       'Content-Type': 'application/x-www-form-urlencoded'
+    //       "X-Requested-With": "application/json"
     //     },
     //     body: {
     //       template_id: id,
-    //       username: 'imgflip_hubot',
-    //       password: 'imgflip_hubot',
-    //       text0: 'sample',
-    //       text1: 'sampletext'
+    //       username: "imgflip_hubot",
+    //       password: "imgflip_hubot",
+    //       text0: "sample",
+    //       text1: "sampletext"
     //     }
     //   }
-    // ).then(res => {
-    //   res.json();
-    //   console.log(res.body);
-    // });
+    // )
+    //   .then(res => {
+    //     return res.json();
+    //     // console.log(res.body);
+    //   })
+    //   .then(data => {
+    //     console.log(data);
+    //   });
   }
   return (
     <div className="main" onClick={getId}>
