@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import MemeTemplate from './components/MemeTemplate';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import MemeTemplate from "./components/MemeTemplate";
+import axios from "axios";
 function App() {
   const [memes, setMemes] = useState({});
   const items = [];
 
   useEffect(() => {
-    fetch('https://api.imgflip.com/get_memes')
-      .then(res => res.json())
-      .then(res => setMemes(res.data.memes));
+    axios.get("https://api.imgflip.com/get_memes").then(res => {
+      setMemes(res.data.data.memes);
+    });
   }, []);
   for (let i in memes) {
     console.log(memes[i]);
