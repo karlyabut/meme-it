@@ -9,8 +9,8 @@ const MemeTemplate = ({ id, name, source }) => {
   function getId() {
     const createMemeObj = {
       template_id: id,
-      username: "",
-      password: "@r",
+      username: process.env.REACT_APP_IMGFLIP_USERNAME,
+      password: process.env.REACT_APP_IMGFLIP_PASSWORD,
       text0: "sample",
       text1: "sampletext"
     };
