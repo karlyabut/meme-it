@@ -5,7 +5,7 @@ import axios from "axios";
 function App() {
   const [memes, setMemes] = useState({});
   const items = [];
-
+  console.log(process.env.REACT_APP_IMGFLIP_USERNAME);
   useEffect(() => {
     axios.get("https://api.imgflip.com/get_memes").then(res => {
       setMemes(res.data.data.memes);
