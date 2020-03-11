@@ -3,6 +3,8 @@ import "../components/MemeTemplate.css";
 import axios from "axios";
 
 const MemeTemplate = ({ id, name, source }) => {
+  const [firstText, setFirstText] = useState("");
+  const [secondText, setSecondText] = useState("");
   const headers = {
     "X-Requested-With": "application/x-www-form-urlencoded"
   };
@@ -11,8 +13,8 @@ const MemeTemplate = ({ id, name, source }) => {
       template_id: id,
       username: process.env.REACT_APP_IMGFLIP_USERNAME,
       password: process.env.REACT_APP_IMGFLIP_PASSWORD,
-      text0: "sample",
-      text1: "sampletext"
+      text0: firstText,
+      text1: secondText
     };
     const params = Object.keys(createMemeObj)
       .map(key => {
@@ -32,10 +34,21 @@ const MemeTemplate = ({ id, name, source }) => {
       });
   }
   return (
-    <div className="main" onClick={getId}>
+    <div className="main">
       <div className="memeContainer">
         <h3>{name}</h3>
         <img className="memeImage" src={source} />
+        <input
+          onChange={e => {
+            setFirstText(e.target.value);
+          }}
+        />
+        <input
+          onChange={e => {
+            setSecondText(e.target.value);
+          }}
+        />
+        <button onClick={getId}>submit</button>
       </div>
     </div>
   );
