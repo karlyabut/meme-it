@@ -5,6 +5,7 @@ import axios from "axios";
 const MemeTemplate = ({ id, name, source }) => {
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
+  const [memeImage, setMemeImage] = useState();
   const headers = {
     "X-Requested-With": "application/x-www-form-urlencoded"
   };
@@ -30,7 +31,7 @@ const MemeTemplate = ({ id, name, source }) => {
         { headers: headers }
       )
       .then(res => {
-        console.log(res);
+        setMemeImage(res.data.data.url);
       });
   }
   return (
@@ -49,6 +50,7 @@ const MemeTemplate = ({ id, name, source }) => {
           }}
         />
         <button onClick={getId}>submit</button>
+        <img src={memeImage} />
       </div>
     </div>
   );
