@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../components/MemeTemplate.css";
 import axios from "axios";
+import { FacebookShareButton, FacebookIcon } from "react-share";
 
 const MemeTemplate = ({ id, name, source }) => {
   const [firstText, setFirstText] = useState("");
@@ -51,6 +52,9 @@ const MemeTemplate = ({ id, name, source }) => {
         />
         <button onClick={getId}>submit</button>
         <img src={memeImage} />
+        <FacebookShareButton url={memeImage}>
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
       </div>
     </div>
   );
