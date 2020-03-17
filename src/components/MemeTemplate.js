@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../components/MemeTemplate.css";
 import axios from "axios";
+import Modal from "react-modal";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -16,6 +17,14 @@ const MemeTemplate = ({ id, name, source }) => {
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
   const [memeImage, setMemeImage] = useState();
+  const [isShowingMemeModal, setIsShowingMemeModal] = useState(false);
+
+  function openMemeModal() {
+    setIsShowingMemeModal(true);
+  }
+  function closeMemeModal() {
+    setIsShowingMemeModal(false);
+  }
   const headers = {
     "X-Requested-With": "application/x-www-form-urlencoded"
   };
@@ -46,34 +55,41 @@ const MemeTemplate = ({ id, name, source }) => {
   }
   return (
     <div className="main">
-      <div className="memeContainer">
-        <h3>{name}</h3>
-        <img className="memeImage" src={source} />
-        <input
-          onChange={e => {
-            setFirstText(e.target.value);
-          }}
-        />
-        <input
-          onChange={e => {
-            setSecondText(e.target.value);
-          }}
-        />
-        <button onClick={getId}>submit</button>
-        <img src={memeImage} />
-        <FacebookShareButton url={memeImage}>
-          <FacebookIcon size={32} round />
-        </FacebookShareButton>
-        <TwitterShareButton url={memeImage}>
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
-        <RedditShareButton url={memeImage}>
-          <RedditIcon size={32} round />
-        </RedditShareButton>
-        <WhatsappShareButton url={memeImage}>
-          <WhatsappIcon size={32} round />
-        </WhatsappShareButton>
-      </div>
+      <button onClick={openMemeModal} />
+      <Modal
+        isOpen={isShowingMemeModal}
+        onRequestClose={closeMemeModal}
+        contentLabel={"meme"}
+      >
+        <div className="memeContainer">
+          <h3>{name}</h3>
+          <img className="memeImage" src={source} />
+          <input
+            onChange={e => {
+              setFirstText(e.target.value);
+            }}
+          />
+          <input
+            onChange={e => {
+              setSecondText(e.target.value);
+            }}
+          />
+          <button onClick={getId}>submit</button>
+          <img src={memeImage} />
+          <FacebookShareButton url={memeImage}>
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+          <TwitterShareButton url={memeImage}>
+            <TwitterIcon size={32} round />
+          </TwitterShareButton>
+          <RedditShareButton url={memeImage}>
+            <RedditIcon size={32} round />
+          </RedditShareButton>
+          <WhatsappShareButton url={memeImage}>
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+        </div>
+      </Modal>
     </div>
   );
 };
