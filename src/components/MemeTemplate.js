@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../components/MemeTemplate.css";
 import axios from "axios";
-import { FacebookShareButton, FacebookIcon } from "react-share";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  RedditShareButton,
+  RedditIcon,
+  WhatsappShareButton,
+  WhatsappIcon
+} from "react-share";
 
 const MemeTemplate = ({ id, name, source }) => {
   const [firstText, setFirstText] = useState("");
@@ -55,6 +64,15 @@ const MemeTemplate = ({ id, name, source }) => {
         <FacebookShareButton url={memeImage}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
+        <TwitterShareButton url={memeImage}>
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+        <RedditShareButton url={memeImage}>
+          <RedditIcon size={32} round />
+        </RedditShareButton>
+        <WhatsappShareButton url={memeImage}>
+          <WhatsappIcon size={32} round />
+        </WhatsappShareButton>
       </div>
     </div>
   );
