@@ -55,7 +55,11 @@ const MemeTemplate = ({ id, name, source }) => {
   }
   return (
     <div className="main">
-      <button onClick={openMemeModal} />
+      <div className="memeContainer">
+        <h3>{name}</h3>
+        <img className="memeImage" src={source} />
+      </div>
+      <button onClick={openMemeModal}>This one!</button>
       <Modal
         isOpen={isShowingMemeModal}
         onRequestClose={closeMemeModal}
