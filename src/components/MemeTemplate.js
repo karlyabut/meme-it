@@ -65,7 +65,7 @@ const MemeTemplate = ({ id, name, source }) => {
         onRequestClose={closeMemeModal}
         contentLabel={"meme"}
       >
-        <div className="memeContainer">
+        <div className="memeContainer insideModal">
           <h3>{name}</h3>
           <img className="memeImage" src={source} />
           <input
@@ -80,18 +80,20 @@ const MemeTemplate = ({ id, name, source }) => {
           />
           <button onClick={getId}>submit</button>
           <img src={memeImage} />
-          <FacebookShareButton url={memeImage}>
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
-          <TwitterShareButton url={memeImage}>
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
-          <RedditShareButton url={memeImage}>
-            <RedditIcon size={32} round />
-          </RedditShareButton>
-          <WhatsappShareButton url={memeImage}>
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
+          <div>
+            <FacebookShareButton url={memeImage}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={memeImage}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <RedditShareButton url={memeImage}>
+              <RedditIcon size={32} round />
+            </RedditShareButton>
+            <WhatsappShareButton url={memeImage}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </div>
         </div>
       </Modal>
     </div>

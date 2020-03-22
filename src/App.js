@@ -21,7 +21,14 @@ function App() {
       />
     );
   }
-  return <div className="App">{items}</div>;
+  return (
+    <div className="App">
+      <div className="pageTitle">
+        <h1>Meme-it!</h1>
+      </div>
+      {items}
+    </div>
+  );
 }
 
 export default App;
