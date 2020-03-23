@@ -69,18 +69,24 @@ const MemeTemplate = ({ id, name, source }) => {
           <h3>{name}</h3>
           <img className="memeImage" src={source} />
           <input
+            placeholder="top/left text"
+            className="spacer"
             onChange={e => {
               setFirstText(e.target.value);
             }}
           />
           <input
+            placeholder="bottom/right text"
+            className="spacer"
             onChange={e => {
               setSecondText(e.target.value);
             }}
           />
-          <button onClick={getId}>submit</button>
+          <button className="spacer" onClick={getId}>
+            submit
+          </button>
           <img src={memeImage} />
-          <div>
+          <div className="spacer">
             <FacebookShareButton url={memeImage}>
               <FacebookIcon size={32} round />
             </FacebookShareButton>
