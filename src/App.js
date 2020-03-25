@@ -25,6 +25,10 @@ function App() {
     <div className="App">
       <div className="pageTitle">
         <h1>Meme-it!</h1>
+        <p>
+          Choose a template to use for your meme! NOTE: you can only make the
+          memes that requires two text boxes :(
+        </p>
       </div>
       {items}
     </div>

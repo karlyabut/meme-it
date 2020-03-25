@@ -64,6 +64,7 @@ const MemeTemplate = ({ id, name, source }) => {
         isOpen={isShowingMemeModal}
         onRequestClose={closeMemeModal}
         contentLabel={"meme"}
+        style={{ content: { background: "#545454" } }}
       >
         <div className="memeContainer insideModal">
           <h3>{name}</h3>

@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  margin-top: 0;
+  background: #545454;
 }
 
 .App-logo {
@@ -35,4 +37,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* custom css */
+.pageTitle {
+  margin-top: 0;
 }
