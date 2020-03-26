@@ -16,7 +16,7 @@ import {
 const MemeTemplate = ({ id, name, source }) => {
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
-  const [memeImage, setMemeImage] = useState();
+  const [memeImage, setMemeImage] = useState(source);
   const [isShowingMemeModal, setIsShowingMemeModal] = useState(false);
 
   function openMemeModal() {
@@ -68,7 +68,7 @@ const MemeTemplate = ({ id, name, source }) => {
       >
         <div className="memeContainer insideModal">
           <h3>{name}</h3>
-          <img className="memeImage" src={source} />
+          <img className="memeImage" src={memeImage} />
           <input
             placeholder="top/left text"
             className="spacer"
@@ -86,7 +86,6 @@ const MemeTemplate = ({ id, name, source }) => {
           <button className="spacer" onClick={getId}>
             submit
           </button>
-          <img src={memeImage} />
           <div className="spacer">
             <FacebookShareButton url={memeImage}>
               <FacebookIcon size={32} round />
