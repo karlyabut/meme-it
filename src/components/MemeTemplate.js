@@ -16,10 +16,11 @@ import {
 const MemeTemplate = ({ id, name, source }) => {
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
-  const [memeImage, setMemeImage] = useState(source);
+  const [memeImage, setMemeImage] = useState();
   const [isShowingMemeModal, setIsShowingMemeModal] = useState(false);
 
   function openMemeModal() {
+    setMemeImage(source); //set image source back to template image
     setIsShowingMemeModal(true);
   }
   function closeMemeModal() {
@@ -54,20 +55,22 @@ const MemeTemplate = ({ id, name, source }) => {
       });
   }
   return (
-    <div className="main">
+    <div className="template">
       <div className="memeContainer">
-        <h3>{name}</h3>
+        <h3 className="templateName">{name}</h3>
         <img className="memeImage" src={source} />
       </div>
-      <button onClick={openMemeModal}>This one!</button>
+      <button className="spacer pickBtn" onClick={openMemeModal}>
+        This one!
+      </button>
       <Modal
         isOpen={isShowingMemeModal}
         onRequestClose={closeMemeModal}
         contentLabel={"meme"}
-        style={{ content: { background: "#545454" } }}
+        style={{ content: { background: "#0b0c10" } }}
       >
         <div className="memeContainer insideModal">
-          <h3>{name}</h3>
+          <h3 className="templateName">{name}</h3>
           <img className="memeImage" src={memeImage} />
           <input
             placeholder="top/left text"
@@ -83,20 +86,21 @@ const MemeTemplate = ({ id, name, source }) => {
               setSecondText(e.target.value);
             }}
           />
-          <button className="spacer" onClick={getId}>
+          <button className="spacer pickBtn" onClick={getId}>
             submit
           </button>
           <div className="spacer">
-            <FacebookShareButton url={memeImage}>
+            <p>Share your meme!</p>
+            <FacebookShareButton className="shareBtn" url={memeImage}>
               <FacebookIcon size={32} round />
             </FacebookShareButton>
-            <TwitterShareButton url={memeImage}>
+            <TwitterShareButton className="shareBtn" url={memeImage}>
               <TwitterIcon size={32} round />
             </TwitterShareButton>
-            <RedditShareButton url={memeImage}>
+            <RedditShareButton className="shareBtn" url={memeImage}>
               <RedditIcon size={32} round />
             </RedditShareButton>
-            <WhatsappShareButton url={memeImage}>
+            <WhatsappShareButton className="shareBtn" url={memeImage}>
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
           </div>

@@ -5,10 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #1f2833;
 }
 
 h1 {
   margin: 0;
+}
+
+p {
+  color: #c5c6c7;
 }
 
 code {
