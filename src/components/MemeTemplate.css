@@ -12,9 +12,28 @@
 .spacer {
   margin: 5px;
 }
+.memeInput {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.sharingContainer {
+  text-align: center;
+}
+
+.shareBtnContainer {
+  margin-left: 5px;
+}
+
 .shareBtn {
   margin-right: 5px;
 }
+
 .insideModal {
   display: flex;
   flex-direction: column;

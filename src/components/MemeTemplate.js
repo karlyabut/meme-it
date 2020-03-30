@@ -71,17 +71,17 @@ const MemeTemplate = ({ id, name, source }) => {
       >
         <div className="memeContainer insideModal">
           <h3 className="templateName">{name}</h3>
-          <img className="memeImage" src={memeImage} />
+          <img className="memeImage spacer" src={memeImage} />
           <input
             placeholder="top/left text"
-            className="spacer"
+            className="memeInput spacer"
             onChange={e => {
               setFirstText(e.target.value);
             }}
           />
           <input
             placeholder="bottom/right text"
-            className="spacer"
+            className="memeInput spacer"
             onChange={e => {
               setSecondText(e.target.value);
             }}
@@ -89,20 +89,22 @@ const MemeTemplate = ({ id, name, source }) => {
           <button className="spacer pickBtn" onClick={getId}>
             submit
           </button>
-          <div className="spacer">
+          <div className="sharingContainer">
             <p>Share your meme!</p>
-            <FacebookShareButton className="shareBtn" url={memeImage}>
-              <FacebookIcon size={32} round />
-            </FacebookShareButton>
-            <TwitterShareButton className="shareBtn" url={memeImage}>
-              <TwitterIcon size={32} round />
-            </TwitterShareButton>
-            <RedditShareButton className="shareBtn" url={memeImage}>
-              <RedditIcon size={32} round />
-            </RedditShareButton>
-            <WhatsappShareButton className="shareBtn" url={memeImage}>
-              <WhatsappIcon size={32} round />
-            </WhatsappShareButton>
+            <div className="shareBtnContainer">
+              <FacebookShareButton className="shareBtn" url={memeImage}>
+                <FacebookIcon size={32} round />
+              </FacebookShareButton>
+              <TwitterShareButton className="shareBtn" url={memeImage}>
+                <TwitterIcon size={32} round />
+              </TwitterShareButton>
+              <RedditShareButton className="shareBtn" url={memeImage}>
+                <RedditIcon size={32} round />
+              </RedditShareButton>
+              <WhatsappShareButton className="shareBtn" url={memeImage}>
+                <WhatsappIcon size={32} round />
+              </WhatsappShareButton>
+            </div>
           </div>
         </div>
       </Modal>
