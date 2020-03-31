@@ -10,7 +10,9 @@ import {
   RedditShareButton,
   RedditIcon,
   WhatsappShareButton,
-  WhatsappIcon
+  WhatsappIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon
 } from "react-share";
 
 const MemeTemplate = ({ id, name, source }) => {
@@ -95,6 +97,12 @@ const MemeTemplate = ({ id, name, source }) => {
               <FacebookShareButton className="shareBtn" url={memeImage}>
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
+              <FacebookMessengerShareButton
+                className="shareBtn"
+                url={memeImage}
+              >
+                <FacebookMessengerIcon size={32} round />
+              </FacebookMessengerShareButton>
               <TwitterShareButton className="shareBtn" url={memeImage}>
                 <TwitterIcon size={32} round />
               </TwitterShareButton>
