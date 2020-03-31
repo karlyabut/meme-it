@@ -89,7 +89,10 @@ const MemeTemplate = ({ id, name, source }) => {
             }}
           />
           <button className="spacer pickBtn" onClick={getId}>
-            submit
+            meme-it
+          </button>
+          <button className="closeBtn" onClick={closeMemeModal}>
+            forget-it
           </button>
           <div className="sharingContainer">
             <p>Share your meme!</p>

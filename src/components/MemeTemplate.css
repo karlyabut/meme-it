@@ -8,6 +8,7 @@
 .memeContainer {
   /* height: 600px; */
   width: 500px;
+  margin-bottom: 20px;
 }
 .spacer {
   margin: 5px;
@@ -75,5 +76,28 @@
 }
 
 .pickBtn:focus {
+  outline: none;
+}
+
+.closeBtn {
+  border: 1px solid #d12500;
+  border-radius: 20px;
+  background: transparent;
+  color: #d12500;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.closeBtn:hover {
+  background-color: #d12500;
+  border-color: #d12500;
+  color: white;
+}
+
+.closeBtn:focus {
   outline: none;
 }
