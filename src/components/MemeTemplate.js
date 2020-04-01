@@ -20,6 +20,8 @@ const MemeTemplate = ({ id, name, source }) => {
   const [secondText, setSecondText] = useState("");
   const [memeImage, setMemeImage] = useState();
   const [isShowingMemeModal, setIsShowingMemeModal] = useState(false);
+  const [showMemeForm, setShowMemeForm] = useState(true);
+  const [showSharing, setShowSharing] = useState(false);
 
   function openMemeModal() {
     setMemeImage(source); //set image source back to template image
@@ -53,6 +55,7 @@ const MemeTemplate = ({ id, name, source }) => {
         { headers: headers }
       )
       .then(res => {
+        setShowSharing(true);
         setMemeImage(res.data.data.url);
       });
   }
@@ -94,7 +97,10 @@ const MemeTemplate = ({ id, name, source }) => {
           <button className="closeBtn" onClick={closeMemeModal}>
             forget-it
           </button>
-          <div className="sharingContainer">
+          <div
+            className="sharingContainer"
+            style={{ display: showSharing ? "block" : "none" }}
+          >
             <p>Share your meme!</p>
             <div className="shareBtnContainer">
               <FacebookShareButton className="shareBtn" url={memeImage}>
