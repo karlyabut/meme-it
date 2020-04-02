@@ -56,13 +56,6 @@
   max-height: 100%;
 }
 
-.sendCloseBtn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .pickBtn {
   border: 1px solid #45a29e;
   border-radius: 20px;

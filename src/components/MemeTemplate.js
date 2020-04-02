@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../components/MemeTemplate.css";
 import axios from "axios";
 import Modal from "react-modal";
+import ClipLoader from "react-spinners/ClipLoader";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -22,9 +23,12 @@ const MemeTemplate = ({ id, name, source }) => {
   const [isShowingMemeModal, setIsShowingMemeModal] = useState(false);
   const [showMemeForm, setShowMemeForm] = useState(true);
   const [showSharing, setShowSharing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function openMemeModal() {
     setMemeImage(source); //set image source back to template image
+    setShowMemeForm(true);
+    setShowSharing(false);
     setIsShowingMemeModal(true);
   }
   function closeMemeModal() {
@@ -48,6 +52,7 @@ const MemeTemplate = ({ id, name, source }) => {
         );
       })
       .join("&");
+    setIsLoading(true);
     axios
       .post(
         "https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image",
@@ -55,7 +60,9 @@ const MemeTemplate = ({ id, name, source }) => {
         { headers: headers }
       )
       .then(res => {
+        setIsLoading(false);
         setShowSharing(true);
+        setShowMemeForm(false);
         setMemeImage(res.data.data.url);
       });
   }
@@ -77,26 +84,36 @@ const MemeTemplate = ({ id, name, source }) => {
         <div className="memeContainer insideModal">
           <h3 className="templateName">{name}</h3>
           <img className="memeImage spacer" src={memeImage} />
-          <input
-            placeholder="top/left text"
-            className="memeInput spacer"
-            onChange={e => {
-              setFirstText(e.target.value);
-            }}
-          />
-          <input
-            placeholder="bottom/right text"
-            className="memeInput spacer"
-            onChange={e => {
-              setSecondText(e.target.value);
-            }}
-          />
-          <button className="spacer pickBtn" onClick={getId}>
-            meme-it
-          </button>
-          <button className="closeBtn" onClick={closeMemeModal}>
-            forget-it
-          </button>
+          <div
+            className="memeForm"
+            style={{ display: showMemeForm ? "block" : "none" }}
+          >
+            <input
+              placeholder="top/left text"
+              className="memeInput spacer"
+              onChange={e => {
+                setFirstText(e.target.value);
+              }}
+            />
+            <input
+              placeholder="bottom/right text"
+              className="memeInput spacer"
+              onChange={e => {
+                setSecondText(e.target.value);
+              }}
+            />
+            <button
+              className="spacer pickBtn"
+              onClick={getId}
+              disabled={isLoading}
+            >
+              {<ClipLoader size={10} color={"#ffffff"} loading={isLoading} />}
+              meme-it
+            </button>
+            <button className="closeBtn" onClick={closeMemeModal}>
+              forget-it
+            </button>
+          </div>
           <div
             className="sharingContainer"
             style={{ display: showSharing ? "block" : "none" }}
