@@ -107,10 +107,17 @@ const MemeTemplate = ({ id, name, source }) => {
               onClick={getId}
               disabled={isLoading}
             >
-              {<ClipLoader size={10} color={"#ffffff"} loading={isLoading} />}
-              meme-it
+              {isLoading ? (
+                <ClipLoader size={10} color={"#ffffff"} loading={isLoading} />
+              ) : (
+                "meme-it"
+              )}
             </button>
-            <button className="closeBtn" onClick={closeMemeModal}>
+            <button
+              className="closeBtn"
+              onClick={closeMemeModal}
+              style={{ display: isLoading ? "none" : "in-line" }}
+            >
               forget-it
             </button>
           </div>
