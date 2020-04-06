@@ -102,24 +102,26 @@ const MemeTemplate = ({ id, name, source }) => {
                 setSecondText(e.target.value);
               }}
             />
-            <button
-              className="spacer pickBtn"
-              onClick={getId}
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <ClipLoader size={10} color={"#ffffff"} loading={isLoading} />
-              ) : (
-                "meme-it"
-              )}
-            </button>
-            <button
-              className="closeBtn"
-              onClick={closeMemeModal}
-              style={{ display: isLoading ? "none" : "in-line" }}
-            >
-              forget-it
-            </button>
+            <div className="btnContainer">
+              <button
+                className="spacer pickBtn"
+                onClick={getId}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <ClipLoader size={10} color={"#ffffff"} loading={isLoading} />
+                ) : (
+                  "meme-it"
+                )}
+              </button>
+              <button
+                className="closeBtn"
+                onClick={closeMemeModal}
+                style={{ display: isLoading ? "none" : "in-line" }}
+              >
+                forget-it
+              </button>
+            </div>
           </div>
           <div
             className="sharingContainer"
