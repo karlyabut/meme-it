@@ -3,6 +3,7 @@ import "../components/MemeTemplate.css";
 import axios from "axios";
 import Modal from "react-modal";
 import ClipLoader from "react-spinners/ClipLoader";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -147,6 +148,10 @@ const MemeTemplate = ({ id, name, source }) => {
               <WhatsappShareButton className="shareBtn" url={memeImage}>
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
+              <p>{memeImage}</p>
+              <CopyToClipboard text={memeImage}>
+                <button>Copy to clipboard</button>
+              </CopyToClipboard>
             </div>
           </div>
         </div>
