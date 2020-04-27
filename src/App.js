@@ -5,13 +5,14 @@ import axios from "axios";
 function App() {
   const [memes, setMemes] = useState({});
   const items = [];
+  const searchMemes = [];
   useEffect(() => {
     axios.get("https://api.imgflip.com/get_memes").then(res => {
       setMemes(res.data.data.memes);
     });
   }, []);
   for (let i in memes) {
-    console.log(memes[i]);
+    searchMemes.push(memes[i].name);
     items.push(
       <MemeTemplate
         key={i}
@@ -21,6 +22,7 @@ function App() {
       />
     );
   }
+  console.log(searchMemes);
   return (
     <div className="App">
       <div className="pageTitle">
