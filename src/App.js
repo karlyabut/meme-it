@@ -3,26 +3,40 @@ import "./App.css";
 import MemeTemplate from "./components/MemeTemplate";
 import axios from "axios";
 function App() {
-  const [memes, setMemes] = useState({});
+  const [memes, setMemes] = useState([]);
+
+  //set up pagination
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [memesPerPage, setMemesPerPage] = useState(10);
   const items = [];
   const searchMemes = [];
+
   useEffect(() => {
+    setLoading(true);
     axios.get("https://api.imgflip.com/get_memes").then(res => {
       setMemes(res.data.data.memes);
     });
+    setLoading(false);
   }, []);
-  for (let i in memes) {
+
+  const indexOfLastMeme = currentPage * memesPerPage;
+  const indexOfFirstMeme = indexOfLastMeme - memesPerPage;
+  const currentMemes = memes.slice(indexOfFirstMeme, indexOfLastMeme);
+
+  for (let i in currentMemes) {
     searchMemes.push(memes[i].name);
     items.push(
       <MemeTemplate
         key={i}
-        id={memes[i].id}
-        name={memes[i].name}
-        source={memes[i].url}
+        id={currentMemes[i].id}
+        name={currentMemes[i].name}
+        source={currentMemes[i].url}
       />
     );
   }
   console.log(searchMemes);
+  //get current memes
   return (
     <div className="App">
       <div className="pageTitle">

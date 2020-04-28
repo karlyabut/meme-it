@@ -17,7 +17,7 @@ import {
   FacebookMessengerIcon
 } from "react-share";
 
-const MemeTemplate = ({ id, name, source }) => {
+const MemeTemplate = ({ id, name, source, loading }) => {
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
   const [memeImage, setMemeImage] = useState();
@@ -25,6 +25,10 @@ const MemeTemplate = ({ id, name, source }) => {
   const [showMemeForm, setShowMemeForm] = useState(true);
   const [showSharing, setShowSharing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
   function openMemeModal() {
     setMemeImage(source); //set image source back to template image
