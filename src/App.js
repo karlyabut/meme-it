@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import MemeTemplate from "./components/MemeTemplate";
+import Pagination from "./components/Pagination";
 import axios from "axios";
 function App() {
   const [memes, setMemes] = useState([]);
@@ -8,7 +9,7 @@ function App() {
   //set up pagination
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [memesPerPage, setMemesPerPage] = useState(10);
+  const [memesPerPage, setMemesPerPage] = useState(5);
   const items = [];
   const searchMemes = [];
 
@@ -32,10 +33,13 @@ function App() {
         id={currentMemes[i].id}
         name={currentMemes[i].name}
         source={currentMemes[i].url}
+        loading={loading}
       />
     );
   }
   console.log(searchMemes);
+  //changing page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
   //get current memes
   return (
     <div className="App">
@@ -47,6 +51,11 @@ function App() {
         </p>
       </div>
       {items}
+      <Pagination
+        memesPerPage={memesPerPage}
+        totalMemes={memes.length}
+        paginate={paginate}
+      />
     </div>
   );
 }
