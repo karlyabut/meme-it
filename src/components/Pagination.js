@@ -1,4 +1,5 @@
 import React from "react";
+import "../components/Pagination.css";
 
 const Pagination = ({ memesPerPage, totalMemes, paginate }) => {
   const pageNumbers = [];
@@ -6,10 +7,13 @@ const Pagination = ({ memesPerPage, totalMemes, paginate }) => {
     pageNumbers.push(i);
   }
   return (
-    <nav>
-      <ul>
-        {pageNumbers.map(number => (
-          <li key={number}>
+    <ul>
+      <div className="pagination">
+        <a href="#">&laquo;</a>
+      </div>
+      {pageNumbers.map(number => (
+        <div className="pagination">
+          <li key={number} className="pageItem">
             <a
               onClick={() => {
                 paginate(number);
@@ -19,9 +23,12 @@ const Pagination = ({ memesPerPage, totalMemes, paginate }) => {
               {number}
             </a>
           </li>
-        ))}
-      </ul>
-    </nav>
+        </div>
+      ))}
+      <div className="pagination">
+        <a href="#">&raquo;</a>
+      </div>
+    </ul>
   );
 };
 

@@ -9,7 +9,7 @@ function App() {
   //set up pagination
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [memesPerPage, setMemesPerPage] = useState(5);
+  const [memesPerPage, setMemesPerPage] = useState(10);
   const items = [];
   const searchMemes = [];
 
