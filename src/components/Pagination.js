@@ -1,7 +1,7 @@
 import React from "react";
 import "../components/Pagination.css";
 
-const Pagination = ({ memesPerPage, totalMemes, paginate }) => {
+const Pagination = ({ currentPage, memesPerPage, totalMemes, paginate }) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalMemes / memesPerPage); i++) {
     pageNumbers.push(i);
@@ -9,7 +9,16 @@ const Pagination = ({ memesPerPage, totalMemes, paginate }) => {
   return (
     <ul>
       <div className="pagination">
-        <a href="#">&laquo;</a>
+        {currentPage === 1 ? null : (
+          <a
+            href="#"
+            onClick={() => {
+              paginate(currentPage - 1);
+            }}
+          >
+            &laquo;
+          </a>
+        )}
       </div>
       {pageNumbers.map(number => (
         <div className="pagination">
@@ -26,7 +35,16 @@ const Pagination = ({ memesPerPage, totalMemes, paginate }) => {
         </div>
       ))}
       <div className="pagination">
-        <a href="#">&raquo;</a>
+        {currentPage === pageNumbers.length ? null : (
+          <a
+            href="#"
+            onClick={() => {
+              paginate(currentPage + 1);
+            }}
+          >
+            &raquo;
+          </a>
+        )}
       </div>
     </ul>
   );

@@ -52,6 +52,7 @@ function App() {
       </div>
       {items}
       <Pagination
+        currentPage={currentPage}
         memesPerPage={memesPerPage}
         totalMemes={memes.length}
         paginate={paginate}
