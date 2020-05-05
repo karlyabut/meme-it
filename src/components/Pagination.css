@@ -16,3 +16,8 @@ ul {
 .pagination a:hover:not(.active) {
   background-color: #ddd;
 }
+
+.activePage {
+  background-color: #45a29e;
+  border: 1px solid #ddd;
+}

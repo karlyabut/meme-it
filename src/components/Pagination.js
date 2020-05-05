@@ -24,6 +24,9 @@ const Pagination = ({ currentPage, memesPerPage, totalMemes, paginate }) => {
         <div className="pagination">
           <li key={number} className="pageItem">
             <a
+              className={
+                currentPage === number ? "pagination activePage" : "pagination"
+              }
               onClick={() => {
                 paginate(number);
               }}
