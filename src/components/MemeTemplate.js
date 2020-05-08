@@ -18,6 +18,7 @@ import {
 } from "react-share";
 
 const MemeTemplate = ({ id, name, source, loading }) => {
+  Modal.setAppElement(".App");
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
   const [memeImage, setMemeImage] = useState();
