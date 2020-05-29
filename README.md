@@ -1,6 +1,6 @@
 # meme generator (fun project in progress)
 
-This projocet will be consuming data from this API (https://api.imgflip.com/)
+This project will be consuming data from this API (https://api.imgflip.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
